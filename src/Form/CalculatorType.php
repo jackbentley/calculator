@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Model\Calculator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,7 @@ class CalculatorType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                // Configure your form options here
+                'data_class' => Calculator::class,
             ]
         );
     }
