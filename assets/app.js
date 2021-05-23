@@ -10,3 +10,19 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+let mainInput = document.getElementById('calculator_calculation');
+let buttons = document.querySelectorAll('button[data-input]');
+let clearButton = document.querySelectorAll('button[data-clear]');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', event => {
+        mainInput.value = mainInput.value + button.getAttribute('data-input');
+    });
+});
+
+clearButton.forEach((button) => {
+    button.addEventListener('click', event => {
+        mainInput.value = '';
+    });
+});

@@ -1,3 +1,78 @@
-body {
-    background-color: lightgray;
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: #f4f4f4;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+label, .hidden {
+    visibility: hidden;
+    position: absolute;
+    top: -100%;
+    left: 0;
+}
+
+input, button {
+    font: inherit;
+}
+
+button {
+    border: none;
+    background: #DDDDDD;
+    padding: 1rem 1.5rem;
+    //margin: .5rem;
+    cursor: pointer;
+    min-width: 4rem;
+
+
+    &:hover, &:focus {
+        background: darken(#DDDDDD, 5%);
+    }
+
+    &.submit {
+        background: #DE9D4EFF;
+        color: #fff;
+
+        &:hover, &:focus {
+            background: darken(#DE9D4EFF, 5%);
+        }
+    }
+}
+
+input {
+    border: 1px solid #DDDDDD;
+    padding: .5rem .5rem;
+    margin: 0;
+    width: 100%;
+}
+
+.calculator {
+    width: 500px;
+}
+
+.buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    row-gap: .4rem;
+    column-gap: .4rem;
+
+    button {
+        flex: 1 1 30%;
+    }
 }

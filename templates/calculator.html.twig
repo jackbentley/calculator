@@ -1,9 +1,44 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Calculate A Calculation
+{% endblock %}
+
 {% block body %}
-    {{ form_start(calculatorForm) }}
+    <div class="container">
+        <div class="calculator">
+            {{ form_start(calculatorForm) }}
 
-    {{ form_rest(calculatorForm) }}
+            {{ form_row(calculatorForm.calculation, {'value': result}) }}
 
-    {{ form_end(calculatorForm) }}
+            <div class="buttons">
+                {% for i in 9..0 %}
+                    <button type="button" data-input="{{ i }}">
+                        {{ i }}
+                    </button>
+                {% endfor %}
+
+                <button type="button" data-input=".">
+                    .
+                </button>
+
+                {% for i in ['*', '+', '-', '/'] %}
+                    <button type="button" data-input="{{ i }}">
+                        {{ i }}
+                    </button>
+                {% endfor %}
+
+                <button type="submit" class="submit">
+                    <span class="hidden">Calculate</span>
+                    =
+                </button>
+
+                <button type="button" data-clear="true">
+                    Clear
+                </button>
+            </div>
+
+            {{ form_end(calculatorForm) }}
+        </div>
+    </div>
 {% endblock %}
