@@ -33,14 +33,20 @@ class Calculator
                 break;
             }
 
-            if (!$this->lexer->isNextTokenAny([Lexer::T_ADDITION, Lexer::T_SUBTRACTION, Lexer::T_DIVISION, Lexer::T_MULTIPLICATION])) {
-                throw new InvalidCalculationException();
-            }
+            if ($this->lexer->isNextToken(Lexer::T_NUMBER) && ((float) $this->lexer->lookahead['value']) < 0) {
+                $operator = Lexer::T_ADDITION;
+            } else {
+                if (!$this->lexer->isNextTokenAny([Lexer::T_ADDITION, Lexer::T_SUBTRACTION, Lexer::T_DIVISION, Lexer::T_MULTIPLICATION])) {
+                    throw new InvalidCalculationException();
+                }
 
-            $this->lexer->moveNext();
+                $this->lexer->moveNext();
 
-            if (!$this->lexer->isNextToken(Lexer::T_NUMBER)) {
-                throw new InvalidCalculationException();
+                $operator = $this->lexer->token['type'];
+
+                if (!$this->lexer->isNextToken(Lexer::T_NUMBER)) {
+                    throw new InvalidCalculationException();
+                }
             }
 
             $effector = (float) $this->lexer->lookahead['value'];
@@ -49,7 +55,7 @@ class Calculator
                 throw new InvalidCalculationException();
             }
 
-            switch ($this->lexer->token['type']) {
+            switch ($operator) {
                 case Lexer::T_ADDITION:
                     $value = $this->add($value, $effector);
                     break;

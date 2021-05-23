@@ -16,7 +16,7 @@ class Lexer extends AbstractLexer
     protected function getCatchablePatterns()
     {
         return [
-            '[0-9\.]*', // numbers
+            '-?[0-9\.]*', // numbers
             '[\*\/\+\-]?', // operators
         ];
     }
