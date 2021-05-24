@@ -96,7 +96,7 @@ class Calculator
 
     private function divide(float $a, float $b): float
     {
-        if ($a === (float) 0 || $b === (float) 0) {
+        if ($b === (float) 0) {
             throw new InvalidCalculationException();
         }
 

@@ -42,6 +42,7 @@ class CalculatorTest extends TestCase
             ['10/4', true, 2.5],
             ['10*2.5', true, 25],
             ['11/0', false],
+            ['0/11', true, 0],
             ['11//11', false],
             ['99+2*-/10', false],
             ['2.5+7-10', true, -0.5],
